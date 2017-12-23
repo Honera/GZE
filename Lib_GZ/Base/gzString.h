@@ -209,7 +209,7 @@ typedef  gzStr8 gzStr;
 gzStr8 gzStrC(const char* _Array);
 gzStr8 gzStrC(gzInt* _Array);
 gzStr8 gzStrC(const char* _Array, gzUInt _nCount);
-
+gzStr8 gzStrUI(gzUInt64 _nEntier);
 
 
 #undef gzp_nS

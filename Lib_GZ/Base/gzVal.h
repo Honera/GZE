@@ -18,7 +18,7 @@
 #include "GzMem.h"
 
 
-#ifdef tPlatform_Web_Emsc
+#ifdef wPlatform__Web_Emsc
 	#include "Lib_GZ/SysUtils/EmscHeader.h"
 
 	#define GzNullVal emscripten::val::global("Null");

@@ -9,7 +9,8 @@
 	 #define tApi_Lib_GZ_OpenGL
 #endif
 
-#include "Lib_GZ/GzOverplace.h"
+//#include "Lib_GZ/GzOverplace.h"
+#include "Lib_GZ/GZ.h"
 #include "Lib_GZ/Macro.h"
 GZ_mHLib(Lib_GZ_OpenGL)
 

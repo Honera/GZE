@@ -22,7 +22,7 @@
 #include "MinGZE.gcpp"
 #endif
 #ifndef tLib_NoGPU
-#include "GPU.gcpp"
+//#include "GPU.gcpp"
 #endif
 //////////////////////////////////
 
@@ -48,8 +48,8 @@ gzInt Close(gzInt _nExitCode);
 		return nMainIsAlive;
 	}
 
-//#elif defined tPlatform_Windows
-#elif defined tPlatform_Windows
+//#elif defined wPlatform__Windows
+#elif defined wPlatform__Windows
 
 	#define UNICODE
 	#define _UNICODE
@@ -83,24 +83,26 @@ LRESULT CALLBACK MainHwndProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARA
 }
 
 	#ifdef tPlatform_CpcDos
-
+//////////////////////////////////////////////////////////
 #include "Lib_GZ/SysUtils/CpcDos/CPC_WPR.cpp"
 extern bool bOnCpcDos;
 int main( int argc, const char* argv[] ){
-		if(bOnCpcDos){
-			nMainIsAlive = Main("");
-			while(nMainIsAlive){
-				nMainIsAlive = Update(0);
-			}
-			return nMainIsAlive;
+	if(bOnCpcDos){
+		nMainIsAlive = Main("");
+		while(nMainIsAlive){
+			nMainIsAlive = Update(0);
 		}
+		return nMainIsAlive;
+	}
 
-	HINSTANCE hThisInstance = GetModuleHandle(NULL);
-	int nCmdShow = 10;//SW_SHOWDEFAULT
-
+HINSTANCE hThisInstance = GetModuleHandle(NULL);
+int nCmdShow = 10;//SW_SHOWDEFAULT
+//////////////////////////////////////////////////////////
 	#else
+//////////////////////////////////////////////////////////
 int WINAPI WinMain (HINSTANCE hThisInstance,  HINSTANCE hPrevInstance,  LPSTR lpszArgument, int nCmdShow){
-	SetConsoleOutputCP(CP_UTF8);
+SetConsoleOutputCP(CP_UTF8);
+//////////////////////////////////////////////////////////
 	#endif
 	
 	GZ_nArrayTotalAlloc = 0;
@@ -146,7 +148,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,  HINSTANCE hPrevInstance,  LPSTR lp
 }
 
 
-#elif defined tPlatform_Web_Emsc ////////////////////// Web //////////////////////////////////////
+#elif defined wPlatform__Web_Emsc ////////////////////// Web //////////////////////////////////////
 
 	#include "Lib_GZ/SysUtils/EmscHeader.h"
 
@@ -204,7 +206,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,  HINSTANCE hPrevInstance,  LPSTR lp
 
 
 #else ////// Others //////
-#error
+
 	int main() {
 		Lib_GZ::Lib::fLoadAllLib();
 		nMainIsAlive = Main("");

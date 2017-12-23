@@ -14,7 +14,7 @@
 
   #include "GzTypes.h"
 /*
-#ifdef tPlatform_Windows
+#ifdef wPlatform__Windows
     #include <stdlib.h>
 #endif
 */

@@ -15,7 +15,7 @@ namespace Lib_GZ_OpenGL{class cOpenGL;}
 
 
 // ------  Cpp section  ------ //
-#ifdef tPlatform_Web_Emsc
+#ifdef wPlatform__Web_Emsc
 #include "Lib_GZ/SysUtils/EmscHeader.h"
 #endif
 extern void* gzEmscPtrBuffer;
@@ -74,7 +74,7 @@ class tApi_Lib_GZ_OpenGL csOpenGL : public Lib_GZ::cStThread  {
 
 	public:
 		// ------  Cpp section  ------ //
-		#ifdef tPlatform_Web_Emsc
+		#ifdef wPlatform__Web_Emsc
 	//	gzVal oGL = val::global("Null");
 		gzVal oGL;
 		#endif
@@ -231,21 +231,21 @@ namespace Lib_GZ_OpenGL{class cOpenGL;}
 #ifndef tHDef_Generate_OpenGL_Lib_GZ_OpenGL_OpenGL
 #define tHDef_Generate_OpenGL_Lib_GZ_OpenGL_OpenGL
 #include "Lib_GZ/GZ.h"
-#include "Lib_GZ/SysUtils/glWin.h"
+#include "Lib_GZ_Platform/Windows/glWin.h"
 //#include "Lib_GZ/Sys/Debug.h"
 namespace Lib_GZ_OpenGL {namespace SysGpuFunc{
 void* fGetFuncGL(const char *_cName, gzBool _bRequired = true);
 gzBool fGetGpuFunctions();
 }}
 
-#if !( defined tPlatform_Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite  ) 
+#if !( defined wPlatform__Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite  ) 
 #define GL_fGetError glCall_fGetError
 typedef gzUInt (APIENTRY* FUNC_fGetError)();
 extern FUNC_fGetError glCall_fGetError;
 #else
 #endif
 
-#if !( defined tPlatform_Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite  ) 
+#if !( defined wPlatform__Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite  ) 
 #define GL_fFlush() glDbg_fFlush(__FILE__, __LINE__)
 typedef void (APIENTRY* FUNC_fFlush)();
 extern FUNC_fFlush glCall_fFlush;
@@ -813,7 +813,7 @@ void  glDbg_fUniformBlockBinding(gzUInt _nPorgramId, gzUInt _nUniformBlickId, gz
 
 
 #endif
-#ifdef tPlatform_Web_Emsc
+#ifdef wPlatform__Web_Emsc
 #define GL_fFlush() oGL.call<void>("flush")
 #define GL_fEnable(_eCapability) oGL.call<void>("enable", val(_eCapability))
 #define GL_fDisable(_eCapability) oGL.call<void>("disable", val(_eCapability))

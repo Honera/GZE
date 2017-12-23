@@ -152,7 +152,7 @@ void csOpenGL::fGenVertexArrays(gzInt _nNb, gzUInt* _aArrays){ gz_(24)
 
 gzVal csOpenGL::fCreateBuffer(){ gz_(25)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	return oGL.call<val>("createBuffer");
 	//return ::GZ::fConsole(gzStrL("ScreateBuffer"));
 	#else
@@ -185,7 +185,7 @@ void csOpenGL::fBufferSubData(Lib_GZ_OpenGL::OpenGL::eBufferTarget _hTarget, gzI
 
 gzStr csOpenGL::fGetShaderInfoLog(gzVal _nShaderId){ gz_(30)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	std::string _sTest = oGL.call<std::string>("getShaderInfoLog", _nShaderId);	 //N
 	return gzStrC(_sTest.c_str());
 	#else
@@ -220,7 +220,7 @@ void csOpenGL::fLinkProgram(gzVal _nIdProgram){ gz_(33)
 
 void csOpenGL::fGetProgramParameter(gzVal _nShaderId, Lib_GZ_OpenGL::OpenGL::eProgramInfo _hInfo, gzInt* _aParams){ gz_(34)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	oGL.call<void>("getProgramParameter", _nShaderId,  val((int)_hInfo) );	 //Not sure
 	#else
 	GL_fGetProgramiv(_nShaderId, _hInfo, _aParams);
@@ -249,7 +249,7 @@ void csOpenGL::fGetProgramInfoLog(gzVal _nProgramId, gzInt _nMaxLength, gzInt* _
 
 gzVal csOpenGL::fGetUniformLocation(gzVal _nIdProgram, gzUInt8* _cName){ gz_(39)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	std::string _sTest = (char*)_cName;
 	return GL_fGetUniformLocation(_nIdProgram, _sTest);
 	#endif
@@ -259,7 +259,7 @@ gzVal csOpenGL::fGetUniformLocation(gzVal _nIdProgram, gzUInt8* _cName){ gz_(39)
 
 gzVal csOpenGL::fGetAttribLocation(gzVal _nIdProgram, gzUInt8* _cName){ gz_(40)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	std::string _sTest = (char*)_cName;
 	return GL_fGetAttribLocation(_nIdProgram, _sTest);
 	#endif
@@ -282,7 +282,7 @@ void csOpenGL::fShaderSource(gzVal _nShaderId, gzPStr _sSourceCode){ gz_(43)
 /*
 	//Tag cpp
 	const gzUInt8* _cStr = _sSourceCode.fcStr();
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	std::string _sTest = (char*)_cStr;
 	oGL.call<void>("shaderSource", _nShaderId,    std::string(_sTest) );	 //Not sure
 	#else
@@ -302,7 +302,7 @@ void csOpenGL::fCompileShader(gzVal _nShaderId){ gz_(45)
 
 gzUInt csOpenGL::fGetShaderParameter(gzVal _nShaderId, Lib_GZ_OpenGL::OpenGL::eShaderInfo _hInfo){ gz_(46)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	return oGL.call<int>("getShaderParameter", _nShaderId,  val((int)_hInfo) );	 //Not sure
 	#else
 	gzInt _nParam;
@@ -385,7 +385,7 @@ void csOpenGL::fBufferData(Lib_GZ_OpenGL::OpenGL::eBufferTarget _hTarget, gzUInt
 void csOpenGL::fBufferData(Lib_GZ_OpenGL::OpenGL::eBufferTarget _hTarget, gzIntX _nSize, void* _pData, Lib_GZ_OpenGL::OpenGL::eDrawFlow _hUsage){ gz_(61)
 	/*
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	gzDataRoot* _array = (gzDataRoot*)(_pData) ;
 	oGL.call<void>("bufferData", (int)_hTarget, _array->JsMem , (int)_hUsage);
 	return;
@@ -397,7 +397,7 @@ void csOpenGL::fBufferData(Lib_GZ_OpenGL::OpenGL::eBufferTarget _hTarget, gzIntX
 
 void csOpenGL::fDrawElements(Lib_GZ_OpenGL::OpenGL::eDrawMode _hMode, gzInt _nCount, Lib_GZ_OpenGL::OpenGL::eVarType _hVarType, void* _pOffset){ gz_(62)
 	//Tag cpp
-	#ifdef tPlatform_Web_Emsc
+	#ifdef wPlatform__Web_Emsc
 	//gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVerticesIndexBuffer);
 	oGL.call<void>("drawElements", val((int)_hMode),  _nCount, val((int)_hVarType), (int)_pOffset);	 //N
 	return;
@@ -724,7 +724,7 @@ cOpenGL::~cOpenGL(){
 
 #include "Lib_GZ_OpenGL/OpenGL.h"
 
-#if !( defined tPlatform_Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite ) 
+#if !( defined wPlatform__Web_Emsc ||  defined GZ_tCpcDos  ||  defined GZ_tLite ) 
 FUNC_fGetError glCall_fGetError = 0;
 FUNC_fFlush glCall_fFlush = 0;
 FUNC_fEnable glCall_fEnable = 0;
@@ -1096,7 +1096,7 @@ void  glDbg_fDisableVertexAttribArray(gzUInt _nIndex, const char* _file , gzUInt
 	}
 }
 gzBool  glDbg_fSwapIntervalEXT(gzInt _nInterval, const char* _file , gzUInt _line){
-	 #ifdef tPlatform_Windows
+	 #ifdef wPlatform__Windows
 	 System::fResetLastError();
 	gzBool _Ret = glCall_fSwapIntervalEXT(_nInterval);
 	gzInt nErr = GL_fGetError();

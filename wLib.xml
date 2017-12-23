@@ -1,0 +1,16 @@
+﻿<Lib>
+	<arguments>
+
+		<Compiler>-I(wPath)</Compiler>
+		<Compiler>-I(wPath)SubLib_System/</Compiler>
+		
+		
+	</arguments>
+
+
+	<If_Platform type="Windows">
+
+		<Linker>-lgdi32 -lopengl32 </Linker>
+		
+	</If_Platform>
+</Lib>

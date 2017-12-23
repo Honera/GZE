@@ -11,6 +11,7 @@
 #ifndef tHDef_GZ_Overplace
 #define tHDef_GZ_Overplace
 
+//#include "Lib_GZ/GZ.h"
 //#include "Lib_GZ/StThread.h"
 //#include "Lib_GZ/Base/gzString.h"
 
@@ -28,6 +29,7 @@ namespace Lib_GZ{
   //return 0;
     }
 }
+
 
 
 #endif

@@ -250,7 +250,9 @@ void fLoadAllLib(){
 void fAllClass(uOverplace* _rLastClass){ 
 
     while (_rLastClass != 0){
+		
 		( gzU8("\n --Class :") + _rLastClass->sName + gzU8(" id:") +  gzStrUI( _rLastClass->nId)).fPrint();
+		
         _rLastClass = _rLastClass->rPrec;
     }
 }
